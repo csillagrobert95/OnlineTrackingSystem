@@ -1,0 +1,135 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service"
+           elementFormDefault="qualified">
+
+    <!--Get Package-->
+    <xs:element name="getPackageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="awb" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPackageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="package" type="tns:packageDTO" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Get All Packages-->
+    <xs:element name="getAllPackagesRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllPackagesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="package" type="tns:packageDTO" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Add Package-->
+    <xs:element name="addPackageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="package" type="tns:packageDTO" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addPackageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="tns:responseMessage" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Remove Package-->
+    <xs:element name="removePackageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="awb" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="removePackageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="tns:responseMessage" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Register Package-->
+    <xs:element name="registerPackageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="awb" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="registerPackageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="tns:responseMessage" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Add Route-->
+    <xs:element name="addRouteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="route" type="tns:routeDTO" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addRouteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="tns:responseMessage" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="responseMessage">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string" />
+            <xs:element name="message" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="packageDTO">
+        <xs:sequence>
+            <xs:element name="awb" type="xs:int" />
+            <xs:element name="senderId" type="xs:int" />
+            <xs:element name="receiverId" type="xs:int" />
+            <xs:element name="packageName" type="xs:string" />
+            <xs:element name="packageDescription" type="xs:string" />
+            <xs:element name="senderCity" type="xs:string" />
+            <xs:element name="destinationCity" type="xs:string" />
+            <xs:element name="tracked" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="routeDTO">
+        <xs:sequence>
+            <xs:element name="awb" type="xs:int" />
+            <xs:element name="routeId" type="xs:int" />
+            <xs:element name="city" type="xs:string" />
+            <xs:element name="receiveTime" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
